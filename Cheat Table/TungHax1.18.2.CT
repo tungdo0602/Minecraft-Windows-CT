@@ -12,7 +12,6 @@
         <CheatEntry>
           <ID>26</ID>
           <Description>"Reach"</Description>
-          <LastState Value="3" RealAddress="7FF6EDD94898"/>
           <Color>FFFF00</Color>
           <VariableType>Float</VariableType>
           <Address>Minecraft.Windows.exe+3694898</Address>
@@ -3045,6 +3044,77 @@ Minecraft.Windows.exe+1F0EDA4: F3 0F 11 44 24 60           - movss [rsp+60],xmm0
 }
 </AssemblerScript>
         </CheatEntry>
+        <CheatEntry>
+          <ID>198</ID>
+          <Description>"Cheap Anvil Repair (Minimum: 1 level)"</Description>
+          <LastState/>
+          <Color>FFFF00</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : Minecraft.Windows.exe
+  Version: 
+  Date   : 2021-12-28
+  Author : Tung
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECT,Minecraft.Windows.exe,41 89 86 A0 00 00 00 85) // should be unique
+alloc(newmem,$1000,INJECT)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [r14+000000A0],1
+  jmp return
+
+INJECT:
+  jmp newmem
+  nop 2
+return:
+registersymbol(INJECT)
+
+[DISABLE]
+
+INJECT:
+  db 41 89 86 A0 00 00 00
+
+unregistersymbol(INJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: Minecraft.Windows.exe+2865374
+
+Minecraft.Windows.exe+286534B: E8 E0 C8 3B FF           - call Minecraft.Windows.exe+1C21C30
+Minecraft.Windows.exe+2865350: 84 C0                    - test al,al
+Minecraft.Windows.exe+2865352: 74 0A                    - je Minecraft.Windows.exe+286535E
+Minecraft.Windows.exe+2865354: C7 44 24 40 01 00 00 00  - mov [rsp+40],00000001
+Minecraft.Windows.exe+286535C: FF C6                    - inc esi
+Minecraft.Windows.exe+286535E: 48 8D 8D C0 00 00 00     - lea rcx,[rbp+000000C0]
+Minecraft.Windows.exe+2865365: E8 46 C5 3B FF           - call Minecraft.Windows.exe+1C218B0
+Minecraft.Windows.exe+286536A: 8B 7C 24 40              - mov edi,[rsp+40]
+Minecraft.Windows.exe+286536E: 8B 44 24 50              - mov eax,[rsp+50]
+Minecraft.Windows.exe+2865372: 03 C6                    - add eax,esi
+// ---------- INJECTING HERE ----------
+Minecraft.Windows.exe+2865374: 41 89 86 A0 00 00 00     - mov [r14+000000A0],eax
+// ---------- DONE INJECTING  ----------
+Minecraft.Windows.exe+286537B: 85 F6                    - test esi,esi
+Minecraft.Windows.exe+286537D: 7F 13                    - jg Minecraft.Windows.exe+2865392
+Minecraft.Windows.exe+286537F: 80 7C 24 32 00           - cmp byte ptr [rsp+32],00
+Minecraft.Windows.exe+2865384: 75 0C                    - jne Minecraft.Windows.exe+2865392
+Minecraft.Windows.exe+2865386: 48 8D 8D C0 00 00 00     - lea rcx,[rbp+000000C0]
+Minecraft.Windows.exe+286538D: E8 1E 68 3B FF           - call Minecraft.Windows.exe+1C1BBB0
+Minecraft.Windows.exe+2865392: 3B FE                    - cmp edi,esi
+Minecraft.Windows.exe+2865394: 75 19                    - jne Minecraft.Windows.exe+28653AF
+Minecraft.Windows.exe+2865396: 85 FF                    - test edi,edi
+Minecraft.Windows.exe+2865398: 74 15                    - je Minecraft.Windows.exe+28653AF
+}
+</AssemblerScript>
+        </CheatEntry>
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
@@ -3058,7 +3128,6 @@ Minecraft.Windows.exe+1F0EDA4: F3 0F 11 44 24 60           - movss [rsp+60],xmm0
         <CheatEntry>
           <ID>156</ID>
           <Description>"LocalPlayer"</Description>
-          <LastState Value="3998489336" RealAddress="26099B98050"/>
           <ShowAsSigned>0</ShowAsSigned>
           <Color>FFFF00</Color>
           <VariableType>4 Bytes</VariableType>
@@ -3082,7 +3151,6 @@ Minecraft.Windows.exe+1F0EDA4: F3 0F 11 44 24 60           - movss [rsp+60],xmm0
             <CheatEntry>
               <ID>173</ID>
               <Description>"X1"</Description>
-              <LastState Value="-4.055404186" RealAddress="26099B98508"/>
               <Color>FFFF00</Color>
               <VariableType>Float</VariableType>
               <Address>"Minecraft.Windows.exe"+042370A8</Address>
@@ -3097,7 +3165,6 @@ Minecraft.Windows.exe+1F0EDA4: F3 0F 11 44 24 60           - movss [rsp+60],xmm0
             <CheatEntry>
               <ID>172</ID>
               <Description>"Y1"</Description>
-              <LastState Value="15.77499962" RealAddress="26099B9850C"/>
               <Color>FFFF00</Color>
               <VariableType>Float</VariableType>
               <Address>"Minecraft.Windows.exe"+042370A8</Address>
@@ -3112,7 +3179,6 @@ Minecraft.Windows.exe+1F0EDA4: F3 0F 11 44 24 60           - movss [rsp+60],xmm0
             <CheatEntry>
               <ID>174</ID>
               <Description>"Z1"</Description>
-              <LastState Value="42.78752518" RealAddress="26099B98510"/>
               <Color>FFFF00</Color>
               <VariableType>Float</VariableType>
               <Address>"Minecraft.Windows.exe"+042370A8</Address>
@@ -3127,7 +3193,6 @@ Minecraft.Windows.exe+1F0EDA4: F3 0F 11 44 24 60           - movss [rsp+60],xmm0
             <CheatEntry>
               <ID>179</ID>
               <Description>"X2"</Description>
-              <LastState Value="-3.455404043" RealAddress="26099B98514"/>
               <ShowAsSigned>0</ShowAsSigned>
               <Color>FFFF00</Color>
               <VariableType>Float</VariableType>
@@ -3143,7 +3208,6 @@ Minecraft.Windows.exe+1F0EDA4: F3 0F 11 44 24 60           - movss [rsp+60],xmm0
             <CheatEntry>
               <ID>178</ID>
               <Description>"Y2"</Description>
-              <LastState Value="17.57499886" RealAddress="26099B98518"/>
               <ShowAsSigned>0</ShowAsSigned>
               <Color>FFFF00</Color>
               <VariableType>Float</VariableType>
@@ -3159,7 +3223,6 @@ Minecraft.Windows.exe+1F0EDA4: F3 0F 11 44 24 60           - movss [rsp+60],xmm0
             <CheatEntry>
               <ID>180</ID>
               <Description>"Z2"</Description>
-              <LastState Value="43.38752365" RealAddress="26099B9851C"/>
               <ShowAsSigned>0</ShowAsSigned>
               <Color>FFFF00</Color>
               <VariableType>Float</VariableType>
@@ -3175,7 +3238,6 @@ Minecraft.Windows.exe+1F0EDA4: F3 0F 11 44 24 60           - movss [rsp+60],xmm0
             <CheatEntry>
               <ID>176</ID>
               <Description>"XVel"</Description>
-              <LastState Value="0" RealAddress="26099B98540"/>
               <ShowAsSigned>0</ShowAsSigned>
               <Color>FFFF00</Color>
               <VariableType>Float</VariableType>
@@ -3191,7 +3253,6 @@ Minecraft.Windows.exe+1F0EDA4: F3 0F 11 44 24 60           - movss [rsp+60],xmm0
             <CheatEntry>
               <ID>175</ID>
               <Description>"YVel"</Description>
-              <LastState Value="0" RealAddress="26099B98544"/>
               <ShowAsSigned>0</ShowAsSigned>
               <Color>FFFF00</Color>
               <VariableType>Float</VariableType>
@@ -3207,7 +3268,6 @@ Minecraft.Windows.exe+1F0EDA4: F3 0F 11 44 24 60           - movss [rsp+60],xmm0
             <CheatEntry>
               <ID>177</ID>
               <Description>"ZVel"</Description>
-              <LastState Value="0" RealAddress="26099B98548"/>
               <ShowAsSigned>0</ShowAsSigned>
               <Color>FFFF00</Color>
               <VariableType>Float</VariableType>
@@ -3223,7 +3283,6 @@ Minecraft.Windows.exe+1F0EDA4: F3 0F 11 44 24 60           - movss [rsp+60],xmm0
             <CheatEntry>
               <ID>7</ID>
               <Description>"XRotation"</Description>
-              <LastState Value="0.5222308636" RealAddress="2609B46C570"/>
               <Color>FFFF00</Color>
               <VariableType>Float</VariableType>
               <Address>"Minecraft.Windows.exe"+03C240F8</Address>
@@ -3238,7 +3297,6 @@ Minecraft.Windows.exe+1F0EDA4: F3 0F 11 44 24 60           - movss [rsp+60],xmm0
             <CheatEntry>
               <ID>8</ID>
               <Description>"YRotation"</Description>
-              <LastState Value="-1.530694962" RealAddress="2609B46C574"/>
               <Color>FFFF00</Color>
               <VariableType>Float</VariableType>
               <Address>"Minecraft.Windows.exe"+03C240F8</Address>
@@ -3253,7 +3311,6 @@ Minecraft.Windows.exe+1F0EDA4: F3 0F 11 44 24 60           - movss [rsp+60],xmm0
             <CheatEntry>
               <ID>184</ID>
               <Description>"Yaw1"</Description>
-              <LastState Value="87.70211792" RealAddress="26099B98188"/>
               <Color>FFFF00</Color>
               <VariableType>Float</VariableType>
               <Address>"Minecraft.Windows.exe"+042370A8</Address>
@@ -3268,7 +3325,6 @@ Minecraft.Windows.exe+1F0EDA4: F3 0F 11 44 24 60           - movss [rsp+60],xmm0
             <CheatEntry>
               <ID>185</ID>
               <Description>"Pitch1"</Description>
-              <LastState Value="150.0784607" RealAddress="26099B9818C"/>
               <Color>FFFF00</Color>
               <VariableType>Float</VariableType>
               <Address>"Minecraft.Windows.exe"+042370B8</Address>
@@ -3283,7 +3339,6 @@ Minecraft.Windows.exe+1F0EDA4: F3 0F 11 44 24 60           - movss [rsp+60],xmm0
             <CheatEntry>
               <ID>191</ID>
               <Description>"Yaw2"</Description>
-              <LastState Value="87.70211792" RealAddress="26099B98190"/>
               <ShowAsSigned>0</ShowAsSigned>
               <Color>FFFF00</Color>
               <VariableType>Float</VariableType>
@@ -3299,7 +3354,6 @@ Minecraft.Windows.exe+1F0EDA4: F3 0F 11 44 24 60           - movss [rsp+60],xmm0
             <CheatEntry>
               <ID>192</ID>
               <Description>"Pitch2"</Description>
-              <LastState Value="150.0784607" RealAddress="26099B98194"/>
               <ShowAsSigned>0</ShowAsSigned>
               <Color>FFFF00</Color>
               <VariableType>Float</VariableType>
@@ -3315,7 +3369,6 @@ Minecraft.Windows.exe+1F0EDA4: F3 0F 11 44 24 60           - movss [rsp+60],xmm0
             <CheatEntry>
               <ID>196</ID>
               <Description>"PlayerCamera"</Description>
-              <LastState Value="0" RealAddress="2603EF55848"/>
               <Color>FFFF00</Color>
               <VariableType>Float</VariableType>
               <Address>"Minecraft.Windows.exe"+04197090</Address>
