@@ -1729,11 +1729,11 @@ local t = getAddressList()
 jetpack = createTimer()
 jetpack.Interval = 1
 pgui = t.getMemoryRecordByDescription("pgui")
-local yrot = t.getMemoryRecordByDescription("YRotation")
-local xrot = t.getMemoryRecordByDescription("XRotation")
-local xvel = t.getMemoryRecordByDescription("XVel")
-local yvel = t.getMemoryRecordByDescription("YVel")
-local zvel = t.getMemoryRecordByDescription("ZVel")
+yrot = t.getMemoryRecordByDescription("YRotation")
+xrot = t.getMemoryRecordByDescription("XRotation")
+xvel = t.getMemoryRecordByDescription("XVel")
+yvel = t.getMemoryRecordByDescription("YVel")
+zvel = t.getMemoryRecordByDescription("ZVel")
 speed = 2
 
 jetpack.OnTimer = function(jetpack)
@@ -3744,34 +3744,6 @@ Minecraft.Windows.exe+13F7A3C: 84 C0                 - test al,al
               </Offsets>
             </CheatEntry>
             <CheatEntry>
-              <ID>172</ID>
-              <Description>"Y1"</Description>
-              <Color>FFFF00</Color>
-              <VariableType>Float</VariableType>
-              <Address>"Minecraft.Windows.exe"+042370A8</Address>
-              <Offsets>
-                <Offset>4BC</Offset>
-                <Offset>B8</Offset>
-                <Offset>90</Offset>
-                <Offset>18</Offset>
-                <Offset>0</Offset>
-              </Offsets>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>174</ID>
-              <Description>"Z1"</Description>
-              <Color>FFFF00</Color>
-              <VariableType>Float</VariableType>
-              <Address>"Minecraft.Windows.exe"+042370A8</Address>
-              <Offsets>
-                <Offset>4C0</Offset>
-                <Offset>B8</Offset>
-                <Offset>90</Offset>
-                <Offset>18</Offset>
-                <Offset>0</Offset>
-              </Offsets>
-            </CheatEntry>
-            <CheatEntry>
               <ID>179</ID>
               <Description>"X2"</Description>
               <ShowAsSigned>0</ShowAsSigned>
@@ -3787,6 +3759,20 @@ Minecraft.Windows.exe+13F7A3C: 84 C0                 - test al,al
               </Offsets>
             </CheatEntry>
             <CheatEntry>
+              <ID>172</ID>
+              <Description>"Y1"</Description>
+              <Color>FFFF00</Color>
+              <VariableType>Float</VariableType>
+              <Address>"Minecraft.Windows.exe"+042370A8</Address>
+              <Offsets>
+                <Offset>4BC</Offset>
+                <Offset>B8</Offset>
+                <Offset>90</Offset>
+                <Offset>18</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
               <ID>178</ID>
               <Description>"Y2"</Description>
               <ShowAsSigned>0</ShowAsSigned>
@@ -3795,6 +3781,20 @@ Minecraft.Windows.exe+13F7A3C: 84 C0                 - test al,al
               <Address>"Minecraft.Windows.exe"+042370A8</Address>
               <Offsets>
                 <Offset>4C8</Offset>
+                <Offset>B8</Offset>
+                <Offset>90</Offset>
+                <Offset>18</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>174</ID>
+              <Description>"Z1"</Description>
+              <Color>FFFF00</Color>
+              <VariableType>Float</VariableType>
+              <Address>"Minecraft.Windows.exe"+042370A8</Address>
+              <Offsets>
+                <Offset>4C0</Offset>
                 <Offset>B8</Offset>
                 <Offset>90</Offset>
                 <Offset>18</Offset>
