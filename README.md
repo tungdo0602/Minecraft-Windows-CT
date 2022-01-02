@@ -5,4 +5,4 @@
 
 ## If you have any hacks and want to share plz make a pull request
 
-# Project genesis by @fligger
+# Project genesis by Fligger
