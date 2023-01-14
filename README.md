@@ -5,6 +5,4 @@
 
 ### link post: https://fearlessrevolution.com/viewtopic.php?f=4&t=18719
 
-## If you have any hacks and want to share plz make a pull request
-
 # Project genesis by Fligger
